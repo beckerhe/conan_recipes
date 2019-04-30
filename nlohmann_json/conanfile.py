@@ -7,7 +7,7 @@ class NlohmannJson(ConanFile):
     description = "JSON for Modern C++ parser and generator from https://github.com/nlohmann/json"
     license = "MIT"
     repo_url = "https://github.com/nlohmann/json"
-    url = "https:/github.com/beckerhe/conan_recipes/nlohmann_json"
+    url = "https://github.com/beckerhe/conan_recipes/tree/master/nlohmann_json"
     author = "Henning Becker (henning.becker@gmail.com)"
     exports_sources = "fix_cmake_install.diff"
 

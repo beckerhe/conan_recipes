@@ -3,7 +3,6 @@ from conans import ConanFile, CMake, tools
 class NlohmannJson(ConanFile):
     name = "nlohmann_json"
     version = "3.6.1"
-    settings = "os", "compiler", "arch", "build_type"
     description = "JSON for Modern C++ parser and generator from https://github.com/nlohmann/json"
     license = "MIT"
     repo_url = "https://github.com/nlohmann/json"
@@ -28,5 +27,3 @@ class NlohmannJson(ConanFile):
 
     def package_id(self):
         self.info.header_only()
-
-

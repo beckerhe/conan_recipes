@@ -3,7 +3,7 @@ from conans import ConanFile, CMake, tools
 class NlohmannJson(ConanFile):
     name = "nlohmann_json"
     version = "3.6.1"
-    description = "JSON for Modern C++ parser and generator from https://github.com/nlohmann/json"
+    description = "JSON for Modern C++ https://nlohmann.github.io/json/"
     license = "MIT"
     repo_url = "https://github.com/nlohmann/json"
     url = "https://github.com/beckerhe/conan_recipes/tree/master/nlohmann_json"

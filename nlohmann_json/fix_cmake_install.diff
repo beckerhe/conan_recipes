@@ -1,0 +1,54 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9887657f..298ddcf8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -87,44 +87,8 @@ endif()
+ ## INSTALL
+ ## install header files, generate and install cmake config files for find_package()
+ ##
+-include(CMakePackageConfigHelpers)
+-write_basic_package_version_file(
+-    ${NLOHMANN_JSON_CMAKE_VERSION_CONFIG_FILE} COMPATIBILITY SameMajorVersion
+-)
+-configure_file(
+-    ${NLOHMANN_JSON_CMAKE_CONFIG_TEMPLATE}
+-    ${NLOHMANN_JSON_CMAKE_PROJECT_CONFIG_FILE}
+-    @ONLY
+-)
+-
+-if(JSON_Install)
+-    install(
+-        DIRECTORY ${NLOHMANN_JSON_INCLUDE_BUILD_DIR}
+-        DESTINATION ${NLOHMANN_JSON_INCLUDE_INSTALL_DIR}
+-    )
+-    install(
+-        FILES ${NLOHMANN_JSON_CMAKE_PROJECT_CONFIG_FILE} ${NLOHMANN_JSON_CMAKE_VERSION_CONFIG_FILE}
+-        DESTINATION ${NLOHMANN_JSON_CONFIG_INSTALL_DIR}
+-    )
+-    if (NLOHMANN_ADD_NATVIS)
+-        install(
+-            FILES ${NLOHMANN_NATVIS_FILE}
+-            DESTINATION .
+-    )
+-    endif()
+-    export(
+-        TARGETS ${NLOHMANN_JSON_TARGET_NAME}
+-        NAMESPACE ${PROJECT_NAME}::
+-        FILE ${NLOHMANN_JSON_CMAKE_PROJECT_TARGETS_FILE}
+-    )
+-    install(
+-        TARGETS ${NLOHMANN_JSON_TARGET_NAME}
+-        EXPORT ${NLOHMANN_JSON_TARGETS_EXPORT_NAME}
+-        INCLUDES DESTINATION ${NLOHMANN_JSON_INCLUDE_INSTALL_DIR}
+-    )
+-    install(
+-        EXPORT ${NLOHMANN_JSON_TARGETS_EXPORT_NAME}
+-        NAMESPACE ${PROJECT_NAME}::
+-        DESTINATION ${NLOHMANN_JSON_CONFIG_INSTALL_DIR}
+-    )
+-endif()
++include(GNUInstallDirs)
++install(TARGETS ${PROJECT_NAME} EXPORT ${PROJECT_NAME}-config)
++install(EXPORT ${PROJECT_NAME}-config NAMESPACE ${PROJECT_NAME}:: DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME})
++install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
++export(TARGETS ${PROJECT_NAME} FILE ${PROJECT_NAME}-config.cmake)

@@ -4,7 +4,7 @@ class CppIterToolsConan(ConanFile):
     name = "cppitertools"
     version = "20190208-24fb7df"
     description = "Implementation of python itertools and builtin iteration functions for C++17"
-    repo_url = "https://github.com/ryanhaining/cppitertools"
+    homepage = "https://github.com/ryanhaining/cppitertools"
     license = "BSD 2-Clause"
 
     author = "Henning Becker (henning.becker@gmail.com)"
@@ -13,7 +13,7 @@ class CppIterToolsConan(ConanFile):
 
     def source(self):
         git = tools.Git(folder="cppitertools")
-        git.clone("https://github.com/ryanhaining/cppitertools.git")
+        git.clone("{}.git".format(self.homepage))
         git.checkout("24fb7df23e207e725c621b694af6a73f950b6515")
         tools.save("cppitertools/CMakeLists.txt", tools.load("CMakeLists.txt"))
 
